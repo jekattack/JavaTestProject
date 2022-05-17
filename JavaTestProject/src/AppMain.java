@@ -8,7 +8,7 @@ public class AppMain {
         int s1;
         int s2;
         String operator;
-        int result = 0;
+
         String resultText = "Ergebnis: ";
         Scanner scanner = new Scanner(System.in);
 
@@ -17,26 +17,12 @@ public class AppMain {
         System.out.println("Zweite Zahl eingeben:");
         s2 = scanner.nextInt();
 
-        System.out.println("Operator eingeben");
+        System.out.println("Operator eingeben:");
         operator = scanner.next();
         operator.replaceAll(" ", "");
 
-        if (operator.equals("+")){
-            result = s1 + s2;
-        } else if (operator.equals("-")) {
-            result = s1 - s2;
-        } else if (operator.equals("*")) {
-            result = s1 * s2;
-        } else if (operator.equals("/")) {
-            result = s1 / s2;
-        } else if (operator.equals("%")) {
-            result = s1 % s2;
-        } else {
-            System.out.println("Der eingegebene Operator funktioniert nicht.");
-        }
-
         System.out.println(s1 + operator + s2 + "=");
-        System.out.println(resultText + "\n" + result);
+        System.out.println(resultText + "\n" + operate(operator, s1, s2));
 
         System.out.println("Zahlen vergleichen \nAufgabe 2:");
 
@@ -56,4 +42,25 @@ public class AppMain {
         }
 
     }
+
+    private static int operate(String operator, int s1, int s2){
+        int result = 0;
+        if (operator.equals("+")){
+            result = s1 + s2;
+        } else if (operator.equals("-")) {
+            result = s1 - s2;
+        } else if (operator.equals("*")) {
+            result = s1 * s2;
+        } else if (operator.equals("/")) {
+            result = s1 / s2;
+        } else if (operator.equals("%")) {
+            result = s1 % s2;
+        } else {
+            System.out.println("Der eingegebene Operator funktioniert nicht.");
+            result = 0;
+        }
+        return result;
+    }
+
+
 }
