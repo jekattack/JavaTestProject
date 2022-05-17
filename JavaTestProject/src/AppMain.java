@@ -2,65 +2,34 @@ import java.util.Scanner;
 
 public class AppMain {
     public static void main(String[] args) {
-
-        System.out.println("Taschenrechner \nAufgabe 1:");
-
-        int s1;
-        int s2;
-        String operator;
-
-        String resultText = "Ergebnis: ";
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Erste Zahl eingeben:");
-        s1 = scanner.nextInt();
+        int s1 = scanner.nextInt();
         System.out.println("Zweite Zahl eingeben:");
-        s2 = scanner.nextInt();
+        int s2 = scanner.nextInt();
 
-        System.out.println("Operator eingeben:");
-        operator = scanner.next();
-        operator.replaceAll(" ", "");
+        int result = sum(s1, s2);
 
-        System.out.println(s1 + operator + s2 + "=");
-        System.out.println(resultText + "\n" + operate(operator, s1, s2));
-
-        System.out.println("Zahlen vergleichen \nAufgabe 2:");
-
-        System.out.println("Erste Zahl eingeben:");
-        s1 = scanner.nextInt();
-        System.out.println("Zweite Zahl eingeben:");
-        s2 = scanner.nextInt();
-
-        if(s1!=s2){
-            if(s1<s2){
-                System.out.println(s1 + " ist kleiner als " + s2);
-            } else {
-                System.out.println(s1 + " ist größer als " + s2);
-            }
-        } else {
-            System.out.println(s1 + " und " + s2 + " sind gleich.");
-        }
-
+        System.out.println(returnResult(result));
+        System.out.println(isSmallerThan100(result));
     }
 
-    private static int operate(String operator, int s1, int s2){
-        int result = 0;
-        if (operator.equals("+")){
-            result = s1 + s2;
-        } else if (operator.equals("-")) {
-            result = s1 - s2;
-        } else if (operator.equals("*")) {
-            result = s1 * s2;
-        } else if (operator.equals("/")) {
-            result = s1 / s2;
-        } else if (operator.equals("%")) {
-            result = s1 % s2;
-        } else {
-            System.out.println("Der eingegebene Operator funktioniert nicht.");
-            result = 0;
-        }
+    private static int sum(int s1, int s2){
+        int result;
+        result = s1 + s2;
         return result;
     }
 
+    private static String returnResult(int result){
+        return "Summer: " + result;
+    };
+
+    private static String isSmallerThan100(int result){
+        if (result >= 100){
+            return "Die Zahl ist größer als 100.";
+        } else {
+            return "Die Zahl ist kleiner als 100.";
+        }
+    };
 
 }
